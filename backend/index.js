@@ -1,20 +1,18 @@
-require('dotenv').config();
 const express = require('express');
-const cors = require('cors');
+const routes = require('./routes/globalRoutes'); // Importer toutes les routes de l'API
+const { route } = require('./routes/testRoutes');
+require('dotenv').config(); // Charger les variables d'environnement
 
+// Initialiser l'application Express
 const app = express();
 
-// Middleware
-app.use(cors());
+// Middleware pour parser le corps des requêtes en JSON
 app.use(express.json());
 
-// Routes
-app.get('/', (req, res) => {
-  res.json({ message: 'Welcome to the backend API Martin !' });
-});
+routes(app);
 
-// Server Configuration
-const PORT = process.env.PORT || 4000;
+// Lancer le serveur sur un port défini dans .env ou 5000 par défaut
+const PORT = process.env.DB_PORT;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
 });
