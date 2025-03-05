@@ -17,6 +17,9 @@ import {
 import CIcon from '@coreui/icons-react'
 import { cilLockLocked, cilUser, cilAt } from '@coreui/icons'
 
+import { LogInContext } from '../../../Context/LogInContext/Login.js'
+import { Auth0Provider } from '@auth0/auth0-react'
+
 // OAuth Handlers (Placeholder)
 const handleOAuthLogin = (provider) => {
   console.log(`Logging in with ${provider}`)
