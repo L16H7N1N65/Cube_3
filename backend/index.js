@@ -14,8 +14,9 @@ routes(app);
 
 connectDB();
 
-// Lancer le serveur sur un port défini dans .env ou 5000 par défaut
-const PORT = process.env.DB_PORT;
+
+const PORT = process.env.PORT || 5000; 
 app.listen(PORT, () => {
-  console.log(`🚀 Serveur démarré sur http://localhost:${PORT}`);
+  console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
+
