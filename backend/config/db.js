@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { Sequelize} = require('sequelize');
 require('dotenv').config(); // Charger les variables d'environnement
 
 const sequelize = new Sequelize(
@@ -13,9 +13,9 @@ const sequelize = new Sequelize(
   }
 );
 
-// Vérifier la connexion à la base de données
-sequelize.authenticate()
-  .then(() => console.log('✅ Connexion réussie à PostgreSQL'))
-  .catch(err => console.error('❌ Erreur de connexion à PostgreSQL:', err));
 
-  module.exports = { sequelize, DataTypes };
+sequelize.sync({ force: true }) // Change to `{ force: true }` if you want to reset the DB on every start
+  .then(() => console.log('📦 Database synced successfully'))
+  .catch((err) => console.error('❌ Database sync error:', err));
+
+  module.exports = sequelize;

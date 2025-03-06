@@ -1,5 +1,5 @@
 const { Sequelize, DataTypes } = require('sequelize');
-const MessageModel = require('../../models/message');
+const MessageModel = require('../../models/Message');
 
 const sequelizeMock = new Sequelize('sqlite::memory:', { logging: false });
 
