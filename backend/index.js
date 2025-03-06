@@ -1,22 +1,22 @@
 const express = require('express');
-const routes = require('./routes/globalRoutes'); // Importer toutes les routes de l'API
-const { route } = require('./routes/testRoutes');
-const connectDB = require('./queries/db'); // Importer la fonction de connexion
-require('dotenv').config(); // Charger les variables d'environnement
+const routes = require('./routes/globalRoutes'); 
+const connectDB = require('./queries/db'); 
+const sequelize = require('./config/db'); // Import Sequelize
+require('dotenv').config(); 
 
-// Initialiser l'application Express
 const app = express();
-
-// Middleware pour parser le corps des requêtes en JSON
 app.use(express.json());
 
 routes(app);
 
+// Ensure the database is synced (creates tables if they don't exist)
+sequelize.sync({ alter: true }) // Change to `{ force: true }` if you want to reset the DB on every start
+  .then(() => console.log('📦 Database synced successfully'))
+  .catch((err) => console.error('❌ Database sync error:', err));
+
 connectDB();
 
-
-const PORT = process.env.PORT || 5000; 
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`🚀 Server running on http://localhost:${PORT}`);
 });
-
