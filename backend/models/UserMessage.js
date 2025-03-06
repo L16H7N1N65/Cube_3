@@ -1,7 +1,5 @@
-const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db');
-
-const UserMessage = sequelize.define('UserMessage', {
+module.exports = (sequelize, DataTypes) => {
+  return sequelize.define('UserMessage', {
   user_message_id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -42,6 +40,4 @@ const UserMessage = sequelize.define('UserMessage', {
       fields: ['user_id', 'message_id']
     }
   ]
-});
-
-module.exports = UserMessage;
+})};
