@@ -1,13 +1,13 @@
 const sequelize = require('../config/db');
 const { DataTypes } = require('sequelize');
 
-const User = require('./user')(sequelize, DataTypes);
+const User = require('./User')(sequelize, DataTypes);
 const PersonalData = require('./PersonalData')(sequelize, DataTypes);
 const Role = require('./Role')(sequelize, DataTypes);
 const UserMessage = require('./UserMessage')(sequelize, DataTypes);
 const UserRessource = require('./UserRessource')(sequelize, DataTypes);
-const Message = require('./message')(sequelize, DataTypes);
-const Ressource = require('./ressource')(sequelize, DataTypes);
+const Message = require('./Message')(sequelize, DataTypes);
+const Ressource = require('./Ressource')(sequelize, DataTypes);
 
 const db = { sequelize, User, PersonalData, Role, UserMessage, UserRessource, Message, Ressource };
 
