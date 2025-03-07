@@ -1,6 +1,6 @@
 const request = require('supertest');
-const app = require('../../index'); // Your Express app entry point
-const { sequelize, User } = require('../../models');
+const app = require('../app');
+const { sequelize, User } = require('../../models'); 
 
 beforeAll(async () => {
   await sequelize.sync({ force: true });
@@ -15,13 +15,14 @@ describe('User API Tests', () => {
     const res = await request(app)
       .post('/users')
       .send({
-        username: 'testuser',
-        email: 'test@example.com',
-        password: 'hashedpassword',
+        username: 'john',
+        email: 'j.doe@example.com',
+        password: 'test',
       });
 
     expect(res.statusCode).toBe(201);
-    expect(res.body.username).toBe('testuser');
+    expect(res.body.username).toBe('john');
+    expect(res.body.email).toBe('j.doe@example.com');
   });
 
   test('GET /users should return all users', async () => {
