@@ -13,9 +13,4 @@ const sequelize = new Sequelize(
   }
 );
 
-
-sequelize.sync({ force: true }) // Change to `{ force: true }` if you want to reset the DB on every start
-  .then(() => console.log('📦 Database synced successfully'))
-  .catch((err) => console.error('❌ Database sync error:', err));
-
   module.exports = sequelize;
