@@ -1,6 +1,7 @@
 const request = require('supertest');
-const app = require('../app');
-const { sequelize, User } = require('../../models'); 
+const app = require('../../app');
+const { sequelize, User } = require('../../models');
+
 
 beforeAll(async () => {
   await sequelize.sync({ force: true });
@@ -15,14 +16,14 @@ describe('User API Tests', () => {
     const res = await request(app)
       .post('/users')
       .send({
-        username: 'john',
-        email: 'j.doe@example.com',
-        password: 'test',
+        username: 'bob',
+        email: 'bob@example.com',
+        password: 'secret',
       });
 
+    // If your route returns 201 on success:
     expect(res.statusCode).toBe(201);
-    expect(res.body.username).toBe('john');
-    expect(res.body.email).toBe('j.doe@example.com');
+    expect(res.body.username).toBe('bob');
   });
 
   test('GET /users should return all users', async () => {

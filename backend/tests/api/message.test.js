@@ -6,9 +6,9 @@ beforeAll(async () => {
   await sequelize.sync({ force: true });
 
   await User.create({
-    username: 'ModeratorUser',
-    email: 'moderator@example.com',
-    password: 'secret',
+    username: 'John',
+    email: 'john@example.com',
+    password: 'test',
     // user_id auto-increments to 1
   });
 });

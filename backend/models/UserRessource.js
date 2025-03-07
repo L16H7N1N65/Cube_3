@@ -1,4 +1,5 @@
 // models/UserRessource.js
+
 module.exports = (sequelize, DataTypes) => {
   return sequelize.define(
     'UserRessource',
