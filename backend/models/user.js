@@ -32,30 +32,9 @@ module.exports = (sequelize, DataTypes) => {
       //   allowNull: true,
       // },
     },
-<<<<<<< HEAD
-    username: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: true,
-      validate: { isEmail: true },
-    },
-    password: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-  }, {
-    timestamps: true,
-  });
-};
-=======
     {
       tableName: 'users', // ensures table is named 'users'
       timestamps: true,
     }
   );
 };
->>>>>>> 3e01ffc5dce2ebb0af7525f1c6c633edcdafd55c
