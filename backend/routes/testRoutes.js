@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const sequelize = require('../config/db'); // Importer la connexion à la base de données
+const sequelize = require('../config/db'); 
 
 // Route GET pour /api/hello
 router.get('/hello', (req, res) => {
@@ -25,7 +25,7 @@ router.get('/test-db', (req, res) => {
 module.exports = router;
 
 
-// Route pour tester la connexion à la base de données
+
 
 
 
