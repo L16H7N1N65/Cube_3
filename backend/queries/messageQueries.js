@@ -1,40 +1,40 @@
-const User = require('../models/user');
+const Message = require('../models/message');
 
-exports.createUser = async (req, res) => {
+exports.createMessage = async (req, res) => {
   try {
-    const newUser = await User.create(req.body);
-    res.status(201).json({ newUser: newUser, message: 'Nouvel utilisateur ajouté avec succès' });
+    const newMessage = await Message.create(req.body);
+    res.status(201).json({ newMessage: newMessage, message: 'Nouveau message ajouté avec succès' });
   } catch (error) {
-    res.status(500).json({ message: 'Erreur lors de la création d\'un utilisateur', error: error.message });
+    res.status(500).json({ message: 'Erreur lors de la création d\'un message', error: error.message });
   }
 };
 
-exports.getUsers = async (req, res) => {
+exports.getMessages = async (req, res) => {
     try {
-      const users = await User.findAll();
-      res.status(200).json(users);
+      const messages = await Message.findAll();
+      res.status(200).json(messages);
     } catch (error) {
-      res.status(500).json({ message: 'Erreur lors de la récupération des users', error: error.message  });
+      res.status(500).json({ message: 'Erreur lors de la récupération des messages', error: error.message  });
     }
   };
   
-exports.getUser = async (req, res) => {
+exports.getMessage = async (req, res) => {
     try {
-      const user = await User.findByPk(req.params.id);
-      if (!user) {
-        return res.status(404).json({ error: 'User not found' });
+      const message = await Message.findByPk(req.params.id);
+      if (!message) {
+        return res.status(404).json({ error: 'Message not found' });
       }
-      return res.status(200).json(user);
+      return res.status(200).json(message);
     } catch (error) {
       console.error('Error fetching user:', error);
       return res.status(500).json({ error: 'Internal Server Error' });
     }
   };
 
-  exports.updateUser = async (req, res) => {
+  exports.updateMessage = async (req, res) => {
     try {
       const { username, email, password } = req.body;
-      const user = await User.findByPk(req.params.id);
+      const user = await Message.findByPk(req.params.id);
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }
@@ -49,9 +49,9 @@ exports.getUser = async (req, res) => {
     }
   };
 
-  exports.deleteUser = async (req, res) => {
+  exports.deleteMessage = async (req, res) => {
     try {
-      const user = await User.findByPk(req.params.id);
+      const user = await Message.findByPk(req.params.id);
       if (!user) {
         return res.status(404).json({ error: 'User not found' });
       }

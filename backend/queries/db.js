@@ -8,7 +8,7 @@ async function connectDB() {
     console.error('❌ Erreur de connexion à PostgreSQL :', error);
   }
 
-  await sequelize.sync({force: true})
+  await sequelize.sync()
   .then(() => console.log('📦 Database synced successfully'))
   .catch((err) => console.error('❌ Database sync error:', err));
 }
