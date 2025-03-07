@@ -64,7 +64,7 @@ router.delete('/:id', async (req, res) => {
     await ressource.destroy();
     return res.status(200).json({ message: 'Ressource deleted successfully' });
   } catch (error) {
-    console.error('Error deleting ressource:', error);
+    console.error('Error deleting ressource:', error);p
     return res.status(500).json({ error: 'Internal Server Error' });
   }
 });
