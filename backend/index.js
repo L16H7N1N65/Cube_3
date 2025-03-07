@@ -12,7 +12,6 @@ routes(app);
 // Ensure the database is synced (creates tables if they don't exist)
 connectDB();
 
-const PORT = process.env.PORT;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on http://localhost:${PORT}`);
+app.listen(process.env.SERVER_PORT, () => {
+  console.log(`🚀 Server running on http://localhost:${process.env.SERVER_PORT}`);
 });
